@@ -10,7 +10,7 @@ Module containing a collection of utilities for SeisFreq.
 """
 
 from .config import read_config
-from .event import Event
+# from .event import Event
 
 
-__all__ = [Event, read_config]
+__all__ = ["Event", "read_config"]

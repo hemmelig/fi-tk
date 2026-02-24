@@ -1,5 +1,5 @@
 """
-Error handling utilities for SeisFreq.
+A small toolkit for frequency index analysis in seismology.
 
 :copyright:
     Conor A. Bacon

@@ -1,9 +1,11 @@
 [project]
-name = "seisfreq"
+name = "fitk"
 version = "0.1.0"
-description = "A collection of utilities for frequency analysis in seismology."
+description = "A small toolkit for frequency index analysis in seismology."
 readme = "README.md"
 requires-python = ">=3.12"
+authors = [{ name = "Conor A. Bacon" }]
+
 dependencies = [
     "matplotlib",
     "multitaper",
@@ -17,17 +19,12 @@ dependencies = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[project.scripts]
-seisfreqctl = "seisfreq.ctl:cli"
-
 [project.optional-dependencies]
 dev = ["ruff", "ipython", "pre-commit"]
-docs = ["Sphinx >= 1.8.1", "docutils"]
-cameras = ["imageio"]
 
 [project.urls]
-GitHub = "https://github.com/AVERT-System/nodectl"
-Issues = "https://github.com/AVERT-System/nodectl/issues"
+GitHub = "https://github.com/hemmelig/fi-tk"
+Issues = "https://github.com/hemmelig/fi-tk/issues"
 
 [tool.ruff]
 line-length = 88

@@ -1,0 +1,68 @@
+method = "fft"
+measure_on = "Z"
+pre_cut = 0.1
+post_cut = 0.5
+stack = false
+n_stack = 3
+outdir = ""
+
+[data]
+client = "pre_cut_qm"  # or "fdsn"
+
+[data.local]
+root = "./archive/miniseed"
+format = "{year}/{network}/{station}/{channels}/{network}.{station}.{location}.{channels}.{year}.{jday:03d}"
+
+[data.pre_cut_qm]
+root = "/staff/conor/software/QuakeMigrate/examples/Icequake_Iceland/outputs/runs/example_run"
+waveforms_pattern = "locate/raw_cut_waveforms/{event_id}.m"
+picks_pattern = "locate/picks/{event_id}.picks"
+
+[data.fdsn]
+base_url = "IRIS"         # or "https://service.iris.edu"
+timeout = 60
+
+[site]
+network = ""
+station = ""
+location = ""
+channels = "*HZ"
+
+[preprocess]
+detrend = ["linear", "demean"]
+
+[preprocess.filters.filter01]
+type = "bandpass"
+freqmin = 0.5
+freqmax = 50.0
+corners = 4
+zerophase = true
+
+[bands]
+low_band = [1.0, 10.0]
+high_band = [12.0, 25.0]
+
+# --- event selection ---
+[events]
+type = "csv"
+path = "july-swarm-events-select.csv"
+# optional: column name in csv
+id_column = "EventID"
+
+# --- picks source (choose one) ---
+[picks]
+type = "quakemigrate_dirs"
+pick_dirs = [
+  "/path/to/run1/picks",
+  "/path/to/run2/picks",
+  "/path/to/run3/picks"
+]
+phase = "P"
+only_picked = false     # if true, ignore "-1" and require PickTime
+
+# Alternative:
+# [picks]
+# type = "manual"
+# phase = "P"
+# # CSV with at least: event_id, station, pick_time (UTC string)
+# path = "manual-picks.csv"

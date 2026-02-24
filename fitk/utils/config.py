@@ -1,8 +1,8 @@
 """
-Utilities for handling config files used by SeisFreq.
+Utilities for handling config files used by fi-tk.
 
 :copyright:
-    Conor A. Bacon
+    2026, Conor A. Bacon
 :license:
     GNU General Public License, Version 3
     (https://www.gnu.org/licenses/gpl-3.0.html)
@@ -14,10 +14,10 @@ import tomllib
 
 
 def read_config(config_filepath: pathlib.Path) -> dict:
-    """Utility to read in a SeisFreq config file."""
+    """Utility to read in a fi-tk config file."""
 
     if not config_filepath.is_file():
-        raise FileNotFoundError("You must provide an FI config file that exists.")
+        raise FileNotFoundError("You must provide an fi-tk config file that exists.")
 
     with config_filepath.open("rb") as f:
         config = tomllib.load(f)
